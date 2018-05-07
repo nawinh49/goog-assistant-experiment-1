@@ -40,12 +40,19 @@ app.post('/', (req, res) => {
             buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
         }))
     }
+    
+    function test(agent) {
+        agent.add(`ไม่ทราบว่าจะเอาแพ็กเกจแบบใด`);
+        agent.add(new Suggestion('Internet'));
+        agent.add(new Suggestion('Voice'));
+    }
 
     let intentMap = new Map()
 
     intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('ir:roaming', sim2fly)
+    intentMap.set('package', test)
     
     agent.handleRequest(intentMap)
 })
