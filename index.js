@@ -4,6 +4,8 @@ const express = require('express'),
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
 
+const unirest = require('unirest');
+
 const PORT = process.env.PORT || 4200
 
 
@@ -32,7 +34,7 @@ app.get('/', function (request, response) {
                         balance = JSON.stringify(output);
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "Object" : output,
+                        "Object" : result
                     })); 
                 }
           
