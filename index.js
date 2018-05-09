@@ -77,26 +77,9 @@ app.post('/', (req, res) => {
         var req = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetMainMenu").strictSSL(false);     
                 req.end(function(res) {
                 if(res.error) {
-                    console.log(res.error)
-                    response.setHeader('Content-Type', 'application/json');
-                    response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
-                    }));
+                   agent.add(`ไม่ตอบ`)
                 } else  {
-                    let result = res.body;
-                    let output = '';
-                 
-                        // output += result.balance;
-                        output += result.menu.packages.packageList[0].amount;
-                        output+="\n"
-                        balance = JSON.stringify(output);
-                    response.setHeader('Content-Type', 'application/json');
-                    response.send(JSON.stringify({
-                        "Object" : output 
-                        
-                    })); 
-                    agent.add(`จะเอาไร`)
+                   agent.add(`จะเอาไร`)
                 }
           
 });
