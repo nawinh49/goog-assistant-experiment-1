@@ -34,7 +34,7 @@ app.get('/', function (request, response) {
                         balance = JSON.stringify(output);
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "Object" : result
+                        "Object" : output 
                     })); 
                 }
           
