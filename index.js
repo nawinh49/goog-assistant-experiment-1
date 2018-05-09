@@ -94,8 +94,9 @@ app.post('/', (req, res) => {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
                         "Object" : output 
-                        agent.add(output);
+                        
                     })); 
+                    agent.add(output);
                 }
           
 });
