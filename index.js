@@ -96,7 +96,7 @@ app.post('/', (req, res) => {
                         "Object" : output 
                         
                     })); 
-                    agent.add(output);
+                    agent.add(`จะเอาไร`)
                 }
           
 });
