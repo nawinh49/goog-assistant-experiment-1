@@ -31,6 +31,7 @@ app.post('/', (req, res) => {
     }
 
     function sim2fly(agent) {
+        
         agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
         agent.add(new Card({
             title: `Sim 2 Fly`,
@@ -42,7 +43,32 @@ app.post('/', (req, res) => {
     }
     
     function test(agent) {
-        agent.add(`ไม่ทราบว่าจะเอาแพ็กเกจแบบใด`);
+         agent.add(`ไม่ทราบว่าจะเอาแพ็กเกจแบบใด`);
+            var req = unirest("GET", "https://10.137.28.40:8443/GoogleAssistant/GetMainMenu").strictSSL(false);     
+                req.end(function(res) {
+                if(res.error) {
+                    console.log(res.error)
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "speech" : "Error. Can you try it again ? ",
+                        "displayText" : "Error. Can you try it again ? "
+                    }));
+                } else  {
+                    let result = res.body;
+                    let output = '';
+                  agent.add(`ไม่ทราบว่าจะเอาแพ็กเกจแบบใด`);
+                        // output += result.balance;
+                        output += result.menu.packages.packageList[0].amount;
+                        output+="\n"
+                        balance = JSON.stringify(output);
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "Object" : output,
+                    })); 
+                }
+          
+            });
+       
         agent.add(new Suggestion('Internet'));
         agent.add(new Suggestion('Voice'));
     }
