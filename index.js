@@ -209,10 +209,8 @@ app.post('/', (req, res) => {
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
-                    title: packagename1,
-                    description: packagedetail1,
-                    image: new Image({
-                        url: simImg[0], alt: packagename1
+                    title: 'คุณมียอดเงินคงเหลือ' ${retJSON.balance} 'บาท สนใจเติมเงินมั้ยครับ',
+                    url: simImg[2], alt: packagename3
                     })
                 }
             }
