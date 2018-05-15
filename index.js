@@ -190,12 +190,7 @@ app.post('/', (req, res) => {
     }
 
     async function balanceHandler(agent) {
-         const simImg = [
-            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
-            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
-            'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg'
-        ]
-         
+             
         let retJSON = await https.getJSON({
             host: '110.49.202.87',
             port: 8443,
@@ -207,17 +202,12 @@ app.post('/', (req, res) => {
         agent.add(`คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท สนใจเติมเงินมั้ยครับ`)
         agent.add(new Suggestion(`Open MY AIS`))
         
-        conv.ask(new Carousel({
-            items: {
-                'balance': {
-                    image: new Image({
-                        url: simImg[0], alt: packagename1
-                    })
-                },
-                
-            }
+        agent.add(new Card({
+            title: `Balance`,
+            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
+                       
         }))
-        agent.add(conv)
+
         
     }
 
