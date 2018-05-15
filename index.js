@@ -17,6 +17,19 @@ app.use(bodyParser.json())
 
 app.get('/', async (request, response) => {
     let retJSON = await https.getJSON({
+            host: '110.49.202.87',
+            port: 8443,
+            path: '/GoogleAssistant/GetMainMenu',
+            method: 'GET',
+            rejectUnauthorized: false,
+            agent: false,
+     })
+    response.send(retJSON.menu.packages.packageList[0])
+    response.end()
+})
+  
+app.get('/Hello', async (request, response) => {
+    let retJSON = await https.getJSON({
         host: '110.49.202.87',
         port: 8443,
         path: '/GoogleAssistant/GetCurrentBalacnce/66932780014',
@@ -72,6 +85,7 @@ app.post('/', (req, res) => {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
+            'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg'
         ]
 
         let conv = agent.conv()
@@ -93,6 +107,76 @@ app.post('/', (req, res) => {
                     description: "ยุโรป อเมริกา และอื่น 🌎",
                     image: new Image({
                         url: simImg[1], alt: 'Sim2Fly 899'
+                    })
+                },
+                'Select_600': {
+                    title: `ซิม เน็ต มาราธอน 600`,
+                    description: "ซิม เน็ต มาราธอน 600 บาท (เน็ตไม่อั้นเร็ว 1 Mbps นาน 6 เดือน)",
+                    image: new Image({
+                        url: simImg[2], alt: 'ซิม เน็ต มาราธอน 600'
+                    })
+                }
+            }
+        }))
+        agent.add(conv)
+    }
+    
+    async function bestSellerHandler(agent) {
+        const simImg = [
+            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
+            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
+            'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg'
+        ]
+        
+     
+
+      
+        let retJSON = await https.getJSON({
+            host: '110.49.202.87',
+            port: 8443,
+            path: '/GoogleAssistant/GetMainMenu',
+            method: 'GET',
+            rejectUnauthorized: false,
+            agent: false,
+        })
+        let res1 = retJSON.menu.packages.packageList[0];
+        let res2 = retJSON.menu.packages.packageList[1];
+        let res3 = retJSON.menu.packages.packageList[2];
+        const packagename1 = res1.packageName_TH;
+        const packagedetail1 = res1.packageDetail_TH;
+        const packagename2 = res2.packageName_TH;
+        const packagedetail2 = res2.packageDetail_TH;
+        const packagename3 = res3.packageName_TH;
+        const packagedetail3 = res3.packageDetail_TH;
+        const greeting = res1.groupName_TH;
+        let conv = agent.conv()
+        conv.ask(new SimpleResponse({
+           // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
+            speech: 'อุ่นใจขอแนะนำ ' + greeting,
+            text: greeting
+        }))
+        
+        conv.ask(new Carousel({
+            items: {
+                'Select_399': {
+                    title: packagename1,
+                    description: packagedetail1,
+                    image: new Image({
+                        url: simImg[0], alt: packagename1
+                    })
+                },
+                'Select_899': {
+                     title: packagename2 ,
+                    description: packagedetail2 ,
+                    image: new Image({
+                        url: simImg[1], alt: packagename2
+                    })
+                },
+                'Select_600': {
+                     title: packagename3 ,
+                    description: packagedetail3 ,
+                    image: new Image({
+                        url: simImg[2], alt: packagename3 
                     })
                 }
             }
@@ -122,9 +206,9 @@ app.post('/', (req, res) => {
 
     intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
-    intentMap.set('ir:roaming', sim2fly)
-    intentMap.set('on-top', onTopHandler)
-    intentMap.set('top-up', balanceHandler)
+    intentMap.set('Ontop-Promotion', bestSellerHandler)
+    intentMap.set('Balance', balanceHandler)
+    //intentMap.set('top-up', balanceHandler)
     agent.handleRequest(intentMap)
 })
 
