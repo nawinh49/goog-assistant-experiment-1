@@ -204,7 +204,7 @@ app.post('/', (req, res) => {
         
         agent.add(new Card({
             title: `Balance`,
-            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
+            imageUrl: `https://110.49.202.87:8443/GoogleAssistant/DisplayImage?balance=${retJSON.balance}`,
                        
         }))
 
