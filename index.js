@@ -204,7 +204,7 @@ app.post('/', (req, res) => {
         
         agent.add(new Card({
             title: `Balance`,
-            imageUrl: `http://2.bp.blogspot.com/-dsig6OKm42E/UoXfOIKzJeI/AAAAAAAAQt8/1HoI0Ql_kcA/s1600/sweetgirl3.gif`,
+            imageUrl: `https://nham.files.wordpress.com/2009/01/bokbok_gif.gif?w=420`,
                        
         }))
 
