@@ -162,7 +162,7 @@ app.post('/', (req, res) => {
                     
                     title: packagename1,
                     
-                    description: <a href="http://www.ais.co.th/">packagedetail1</a>,
+                    description: packagedetail1,
                     
                     image: new Image({
                         url: simImg[0], alt: packagename1,
