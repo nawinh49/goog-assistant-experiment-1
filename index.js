@@ -159,8 +159,10 @@ app.post('/', (req, res) => {
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
+                    
                     title: packagename1,
-                    description: packagedetail1,
+                    
+                    description: <a href="http://www.ais.co.th/">packagedetail1</a>,
                     
                     image: new Image({
                         url: simImg[0], alt: packagename1,
@@ -169,7 +171,7 @@ app.post('/', (req, res) => {
 
                 },
                 'Select_899': {
-                     title: packagename2 ,
+                    title: packagename2 ,
                     description: packagedetail2 ,
                    
                     image: new Image({
@@ -178,7 +180,7 @@ app.post('/', (req, res) => {
                     })
                 },
                 'Select_600': {
-                     title: packagename3 ,
+                    title: packagename3 ,
                     description: packagedetail3 ,
                     
                     image: new Image({
