@@ -162,8 +162,8 @@ app.post('/', (req, res) => {
                     title: packagename1,
                     description: packagedetail1,
                     image: new Image({
-                        url: simImg[0], alt: packagename1,
-                        onclick:'www.ais.co.th'
+                        url: simImg[0], alt: 'www.ais.co.th',
+                        
                     })                  
 
                 },
@@ -171,16 +171,16 @@ app.post('/', (req, res) => {
                      title: packagename2 ,
                     description: packagedetail2 ,
                     image: new Image({
-                        url: simImg[1], alt: packagename2,
-                        onclick:'www.ais.co.th'
+                        url: simImg[1], alt: 'www.ais.co.th',
+                       
                     })
                 },
                 'Select_600': {
                      title: packagename3 ,
                     description: packagedetail3 ,
                     image: new Image({
-                        url: simImg[2], alt: packagename3,
-                        onclick:'www.ais.co.th'
+                        url: simImg[2], alt: 'www.ais.co.th',
+                       
                     })
                 }
             }
