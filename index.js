@@ -161,10 +161,7 @@ app.post('/', (req, res) => {
                 'Select_399': {
                     title: packagename1,
                     description: packagedetail1,
-                    buttons: new Button({
-                    title: 'This is a button',
-                        url: 'https://assistant.google.com/',
-                     }),
+                    
                     image: new Image({
                         url: simImg[0], alt: packagename1,
                         
@@ -174,10 +171,7 @@ app.post('/', (req, res) => {
                 'Select_899': {
                      title: packagename2 ,
                     description: packagedetail2 ,
-                    buttons: new Button({
-                    title: 'This is a button',
-                        url: 'https://assistant.google.com/',
-                     }),
+                   
                     image: new Image({
                         url: simImg[1], alt: packagename2,
                        
@@ -186,10 +180,7 @@ app.post('/', (req, res) => {
                 'Select_600': {
                      title: packagename3 ,
                     description: packagedetail3 ,
-                    buttons: new Button({
-                    title: 'This is a button',
-                        url: 'https://assistant.google.com/',
-                     }),
+                    
                     image: new Image({
                         url: simImg[2], alt: packagename3,
                        
