@@ -205,7 +205,7 @@ app.post('/', (req, res) => {
         agent.add(new Card({
             title: `Balance`,
             imageUrl: `https://4.bp.blogspot.com/-YJ3jSfidBqA/WDYQxoX5omI/AAAAAAAEJVU/e60X-7U_ZwUPOnJRTkikbbhMEjcqLL2AACLcB/s1600/AF002728_05.gif?time=Wed%20May%2016%202018%2010:37:57%20GMT+0700%20(SE%20Asia%20Standard%20Time)`,
-            text: `<center>คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท</center>`
+            text: `<center>คุณมียอดเงินคงเหลือ <b>${retJSON.balance}</b> บาท</center>`
             
         }))
 
