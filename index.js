@@ -204,7 +204,7 @@ app.post('/', (req, res) => {
         
         agent.add(new Card({
             title: `Balance`,
-            imageUrl: `https://110.49.202.87:8443/GoogleAssistant/DisplayImage?balance=${retJSON.balance}`,
+            imageUrl: `http://2.bp.blogspot.com/-dsig6OKm42E/UoXfOIKzJeI/AAAAAAAAQt8/1HoI0Ql_kcA/s1600/sweetgirl3.gif`,
                        
         }))
 
