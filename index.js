@@ -161,13 +161,18 @@ app.post('/', (req, res) => {
                 'Select_399': {
                     title: packagename1,
                     description: packagedetail1,
+                    buttonText: `ดูข้อมูลเพิ่มเติม`,
+                    buttonUrl: `http://www.ais.co.th/package/`,
                     image: new Image({
                         url: simImg[0], alt: packagename1
                     })
+
                 },
                 'Select_899': {
                      title: packagename2 ,
                     description: packagedetail2 ,
+                    buttonText: `ดูข้อมูลเพิ่มเติม`,
+                    buttonUrl: `http://www.ais.co.th/package/`,
                     image: new Image({
                         url: simImg[1], alt: packagename2
                     })
@@ -175,6 +180,8 @@ app.post('/', (req, res) => {
                 'Select_600': {
                      title: packagename3 ,
                     description: packagedetail3 ,
+                    buttonText: `ดูข้อมูลเพิ่มเติม`,
+                    buttonUrl: `http://www.ais.co.th/package/`,
                     image: new Image({
                         url: simImg[2], alt: packagename3 
                     })
@@ -183,6 +190,7 @@ app.post('/', (req, res) => {
         }))
         agent.add(conv)
     }
+
 
     function onTopHandler(agent) {
         agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
