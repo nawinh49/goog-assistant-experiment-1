@@ -161,30 +161,30 @@ app.post('/', (req, res) => {
                 'Select_399': {
                     title: packagename1,
                     description: packagedetail1,
-                    buttonText: `ดูข้อมูลเพิ่มเติม`,
-                    buttonUrl: `http://www.ais.co.th/package/`,
                     image: new Image({
                         url: simImg[0], alt: packagename1
-                    })
+                    }),
+                    buttonText: `ดูข้อมูลเพิ่มเติม`,
+                    buttonUrl: `http://www.ais.co.th/package/`
 
                 },
                 'Select_899': {
                      title: packagename2 ,
                     description: packagedetail2 ,
-                    buttonText: `ดูข้อมูลเพิ่มเติม`,
-                    buttonUrl: `http://www.ais.co.th/package/`,
                     image: new Image({
                         url: simImg[1], alt: packagename2
-                    })
+                    }),
+                    buttonText: `ดูข้อมูลเพิ่มเติม`,
+                    buttonUrl: `http://www.ais.co.th/package/`
                 },
                 'Select_600': {
                      title: packagename3 ,
                     description: packagedetail3 ,
-                    buttonText: `ดูข้อมูลเพิ่มเติม`,
-                    buttonUrl: `http://www.ais.co.th/package/`,
                     image: new Image({
                         url: simImg[2], alt: packagename3 
-                    })
+                    }),
+                    buttonText: `ดูข้อมูลเพิ่มเติม`,
+                    buttonUrl: `http://www.ais.co.th/package/`
                 }
             }
         }))
