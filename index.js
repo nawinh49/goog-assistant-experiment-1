@@ -227,7 +227,7 @@ app.post('/', (req, res) => {
         
         agent.add(new Card({
             title: `ยอดเงิน`,
-            imageUrl: `https://colinbendell.cloudinary.com/image/upload/c_crop,f_auto,g_auto,h_350,w_400/v1512090971/Wizard-Clap-by-Markus-Magnusson.gif`,
+            imageUrl: `https://4.bp.blogspot.com/-YJ3jSfidBqA/WDYQxoX5omI/AAAAAAAEJVU/e60X-7U_ZwUPOnJRTkikbbhMEjcqLL2AACLcB/s1600/AF002728_05.gif`,
             text: `<center><font color="green">คุณมียอดเงินคงเหลือ <b>${retJSON.balance}</b> บาท</font></center>`
             
         }))
