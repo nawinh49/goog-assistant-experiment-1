@@ -1,4 +1,4 @@
-const { SimpleResponse, Carousel, Image , BrowseCarouselItem , BrowseCarousel } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+const { SimpleResponse, Carousel, Image  } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
 const processor = require('./processor')
 const express = require('express'),
@@ -6,20 +6,6 @@ const express = require('express'),
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
 
-const {
-  dialogflow,
-  BasicCard,
-  BrowseCarousel,
-  BrowseCarouselItem,
-  Button,
-  Carousel,
-  Image,
-  LinkOutSuggestion,
-  List,
-  MediaObject,
-  Suggestions,
-  SimpleResponse,
- } = require('actions-on-google');
 
 const https = require('./synchttps')
 
@@ -171,7 +157,7 @@ app.post('/', (req, res) => {
             text: greeting
         }))
         
-         conv.ask(new BrowseCarousel({
+         conv.ask(new Carousel({
             items: {
                 'Select_399': {
                     
