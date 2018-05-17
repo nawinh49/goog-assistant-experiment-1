@@ -5,8 +5,7 @@ const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
-const { BrowseCarousel, Suggestion } = require('dialogflow-fulfillment')
-const { BrowseCarouselItem, Suggestion } = require('dialogflow-fulfillment')
+
 
 const https = require('./synchttps')
 
@@ -188,7 +187,7 @@ app.post('/', (req, res) => {
               footer: 'Item 2 footer',
             }),  
           ],
-        }));
+        }))
         agent.add(conv)
     }
     
