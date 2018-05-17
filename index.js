@@ -1,4 +1,4 @@
-const { SimpleResponse, Carousel, Image } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+const { SimpleResponse, Carousel, Image , BrowseCarouselItem } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
 const processor = require('./processor')
 const express = require('express'),
@@ -156,41 +156,38 @@ app.post('/', (req, res) => {
             text: greeting
         }))
         
-        conv.ask(new Carousel({
-            items: {
-                'Select_399': {
-                    
-                    title: packagename1,
-                    
-                    description: packagedetail1,
-                    
-                    image: new Image({
-                        url: simImg[0], alt: packagename1,
-                        
-                    }) 
-                  
-
-                },
-                'Select_899': {
-                    title: packagename2 ,
-                    description: packagedetail2 ,
-                   
-                    image: new Image({
-                        url: simImg[1], alt: packagename2,
-                       
-                    })
-                },
-                'Select_600': {
-                    title: packagename3 ,
-                    description: packagedetail3 ,
-                    
-                    image: new Image({
-                        url: simImg[2], alt: packagename3,
-                       
-                    })
-                }
-            }
-        }))
+        conv.ask(new BrowseCarousel({
+          items: [
+            new BrowseCarouselItem({
+              title: packagename1,
+              url: 'http://www.ais.co.th/',
+              description: packagedetail1,
+              image: new Image({
+                 url: simImg[0], alt: packagename1,
+              }),
+              footer: 'Item 1 footer',
+            }),
+            new BrowseCarouselItem({
+               title: packagename2,
+               url: 'http://www.ais.co.th/',
+              description: packagedetail2,
+              image: new Image({
+                 url: simImg[1], alt: packagename2,
+              }),
+              footer: 'Item 2 footer',
+            }),
+             new BrowseCarouselItem({
+               title: packagename3,
+               url: 'http://www.ais.co.th/',
+              description: packagedetail3,
+              image: new Image({
+                 url: simImg[2], alt: packagename3,
+              }),
+              footer: 'Item 2 footer',
+            }),  
+          ],
+        }));
+        
         agent.add(conv)
     }
     
@@ -227,7 +224,7 @@ app.post('/', (req, res) => {
         
         agent.add(new Card({
             title: `ยอดเงิน`,
-            imageUrl: `https://4.bp.blogspot.com/-YJ3jSfidBqA/WDYQxoX5omI/AAAAAAAEJVU/e60X-7U_ZwUPOnJRTkikbbhMEjcqLL2AACLcB/s1600/AF002728_05.gif`,
+            imageUrl: `https://colinbendell.cloudinary.com/image/upload/c_crop,f_auto,g_auto,h_350,w_400/v1512090971/Wizard-Clap-by-Markus-Magnusson.gif`,
             text: `<center><font color="green">คุณมียอดเงินคงเหลือ <b>${retJSON.balance}</b> บาท</font></center>`
             
         }))
