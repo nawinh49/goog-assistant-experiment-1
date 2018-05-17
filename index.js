@@ -73,7 +73,7 @@ app.post('/', (req, res) => {
     const agent = new WebhookClient({request: req, response: res})
 
     function welcome(agent) {
-        agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
+        agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยคะ`)
     }
 
     function fallback(agent) {
@@ -222,7 +222,7 @@ app.post('/', (req, res) => {
             rejectUnauthorized: false,
             agent: false,
         })
-        agent.add(`คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท สนใจเติมเงินมั้ยครับ`)
+        agent.add(`คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท สนใจเติมเงินมั้ยคะ`)
         agent.add(new Suggestion(`Open MY AIS`))
         
         agent.add(new Card({
