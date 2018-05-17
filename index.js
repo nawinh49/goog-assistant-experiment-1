@@ -163,7 +163,7 @@ app.post('/', (req, res) => {
                     title: packagename1,
                     
                     description: packagedetail1,
-                    
+                    url:'http://www.ais.co.th/',
                     image: new Image({
                         url: simImg[0], alt: packagename1,
                         
@@ -174,7 +174,7 @@ app.post('/', (req, res) => {
                 'Select_899': {
                     title: packagename2 ,
                     description: packagedetail2 ,
-                   
+                    url:'http://www.ais.co.th/',
                     image: new Image({
                         url: simImg[1], alt: packagename2,
                        
@@ -183,7 +183,7 @@ app.post('/', (req, res) => {
                 'Select_600': {
                     title: packagename3 ,
                     description: packagedetail3 ,
-                    
+                    url:'http://www.ais.co.th/',
                     image: new Image({
                         url: simImg[2], alt: packagename3,
                        
