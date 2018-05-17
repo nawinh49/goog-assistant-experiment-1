@@ -6,21 +6,6 @@ const express = require('express'),
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
 
-const {
-  dialogflow,
-  BasicCard,
-  BrowseCarousel,
-  BrowseCarouselItem,
-  Button,
-  Carousel,
-  Image,
-  LinkOutSuggestion,
-  List,
-  MediaObject,
-  Suggestions,
-  SimpleResponse,
- } = require('actions-on-google');
-
 const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
@@ -106,20 +91,20 @@ app.post('/', (req, res) => {
         let conv = agent.conv()
         conv.ask(new SimpleResponse({
             speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ✈️'
+            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ??'
         }))
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
                     title: `Sim 2 Fly 399`,
-                    description: `เอเชีย, ออสเตรเลีย 🗼`,
+                    description: `เอเชีย, ออสเตรเลีย ??`,
                     image: new Image({
                         url: simImg[0], alt: 'Sim2Fly 399'
                     })
                 },
                 'Select_899': {
                     title: `Sim 2 Fly 899`,
-                    description: "ยุโรป อเมริกา และอื่น 🌎",
+                    description: "ยุโรป อเมริกา และอื่น ??",
                     image: new Image({
                         url: simImg[1], alt: 'Sim2Fly 899'
                     })
@@ -171,38 +156,41 @@ app.post('/', (req, res) => {
             text: greeting
         }))
         
-        conv.ask(new BrowseCarousel({
-          items: [
-            new BrowseCarouselItem({
-              title: packagename1,
-              url: 'http://www.ais.co.th/',
-              description: packagedetail1,
-              image: new Image({
-                 url: simImg[0], alt: packagename1,
-              }),
-              footer: 'Item 1 footer',
-            }),
-            new BrowseCarouselItem({
-               title: packagename2,
-               url: 'http://www.ais.co.th/',
-              description: packagedetail2,
-              image: new Image({
-                 url: simImg[1], alt: packagename2,
-              }),
-              footer: 'Item 2 footer',
-            }),
-             new BrowseCarouselItem({
-               title: packagename3,
-               url: 'http://www.ais.co.th/',
-              description: packagedetail3,
-              image: new Image({
-                 url: simImg[2], alt: packagename3,
-              }),
-              footer: 'Item 2 footer',
-            }),  
-          ],
-        }));
-        
+        conv.ask(new Carousel({
+            items: {
+                'Select_399': {
+                    
+                    title: packagename1,
+                    
+                    description: packagedetail1,
+                    
+                    image: new Image({
+                        url: simImg[0], alt: packagename1,
+                        
+                    }) 
+                  
+
+                },
+                'Select_899': {
+                    title: packagename2 ,
+                    description: packagedetail2 ,
+                   
+                    image: new Image({
+                        url: simImg[1], alt: packagename2,
+                       
+                    })
+                },
+                'Select_600': {
+                    title: packagename3 ,
+                    description: packagedetail3 ,
+                    
+                    image: new Image({
+                        url: simImg[2], alt: packagename3,
+                       
+                    })
+                }
+            }
+        }))
         agent.add(conv)
     }
     
