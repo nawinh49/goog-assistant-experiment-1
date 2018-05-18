@@ -1,6 +1,5 @@
-/*const { SimpleResponse, Carousel, Image } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');*/
+const { SimpleResponse, Carousel, Image } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
-const {  dialogflow,  BasicCard,  BrowseCarousel, BrowseCarouselItem , Button,  Carousel,  Image,  LinkOutSuggestion,  List,  MediaObject,  Suggestions,  SimpleResponse } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
@@ -74,7 +73,7 @@ app.post('/', (req, res) => {
     const agent = new WebhookClient({request: req, response: res})
 
     function welcome(agent) {
-        agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยคะ`)
+        agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
     }
 
     function fallback(agent) {
@@ -157,37 +156,41 @@ app.post('/', (req, res) => {
             text: greeting
         }))
         
-        conv.ask(new BrowseCarousel({
-          items: [
-            new BrowseCarouselItem({
-              title: packagename1,
-              url: 'http://www.ais.co.th/',
-              description: packagedetail1,
-              image: new Image({
-                 url: simImg[0], alt: packagename1,
-              }),
-              footer: 'Item 1 footer',
-            }),
-            new BrowseCarouselItem({
-               title: packagename2,
-               url: 'http://www.ais.co.th/',
-              description: packagedetail2,
-              image: new Image({
-                 url: simImg[1], alt: packagename2,
-              }),
-              footer: 'Item 2 footer',
-            }),
-             new BrowseCarouselItem({
-               title: packagename3,
-               url: 'http://www.ais.co.th/',
-              description: packagedetail3,
-              image: new Image({
-                 url: simImg[2], alt: packagename3,
-              }),
-              footer: 'Item 2 footer',
-            }),  
-          ],
-        }));
+        conv.ask(new Carousel({
+            items: {
+                'Select_399': {
+                    
+                    title: packagename1,
+                    
+                    description: packagedetail1,
+                    
+                    image: new Image({
+                        url: simImg[0], alt: packagename1,
+                        
+                    }) 
+                  
+
+                },
+                'Select_899': {
+                    title: packagename2 ,
+                    description: packagedetail2 ,
+                   
+                    image: new Image({
+                        url: simImg[1], alt: packagename2,
+                       
+                    })
+                },
+                'Select_600': {
+                    title: packagename3 ,
+                    description: packagedetail3 ,
+                    
+                    image: new Image({
+                        url: simImg[2], alt: packagename3,
+                       
+                    })
+                }
+            }
+        }))
         agent.add(conv)
     }
     
@@ -219,13 +222,13 @@ app.post('/', (req, res) => {
             rejectUnauthorized: false,
             agent: false,
         })
-        agent.add(`คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท สนใจเติมเงินมั้ยคะ`)
+        agent.add(`คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท สนใจเติมเงินมั้ยครับ`)
         agent.add(new Suggestion(`Open MY AIS`))
         
         agent.add(new Card({
             title: `ยอดเงิน`,
-            imageUrl: `https://2.bp.blogspot.com/-0eJyxti_rgg/Wjh2zCRyuMI/AAAAAAAKheY/2gqkHoJELjkBdlolsYxx5h8fhfbjwblGACLcBGAs/s1600/TF005613.png`,
-            text: `คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท`
+            imageUrl: `https://colinbendell.cloudinary.com/image/upload/c_crop,f_auto,g_auto,h_350,w_400/v1512090971/Wizard-Clap-by-Markus-Magnusson.gif`,
+            text: `<center><font color="green">คุณมียอดเงินคงเหลือ <b>${retJSON.balance}</b> บาท</font></center>`
             
         }))
 
