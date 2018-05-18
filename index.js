@@ -236,7 +236,7 @@ app.post('/', (req, res) => {
     }
     
     function testtum(agent) {
-        agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
+        agent.add(`อิอิ พี่ตั้ม`)
         agent.add(new Suggestion(`Open MY AIS`))
     }
 
