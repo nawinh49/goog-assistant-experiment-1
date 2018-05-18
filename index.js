@@ -234,6 +234,11 @@ app.post('/', (req, res) => {
 
         
     }
+    
+    function testtum(agent) {
+        agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
+        agent.add(new Suggestion(`Open MY AIS`))
+    }
 
     let intentMap = new Map()
 
@@ -242,6 +247,7 @@ app.post('/', (req, res) => {
     intentMap.set('Ontop-Promotion', bestSellerHandler)
     intentMap.set('Balance', balanceHandler)
     intentMap.set('ir:roaming', sim2fly)
+    intentMap.set('Ptum', testtum)
     //intentMap.set('top-up', balanceHandler)
     agent.handleRequest(intentMap)
 })
